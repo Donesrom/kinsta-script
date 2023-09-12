@@ -1,5 +1,6 @@
 import time
 import requests
+from webhook import webhook
 
 def get_disk_usage(path="/mnt/persistent/data"):
   # Gets the disk usage of the persistent storage disk.
@@ -11,7 +12,7 @@ def get_disk_usage(path="/mnt/persistent/data"):
 
 def send_slack_alert(message):
   # Sends an alert to Slack via a webhook.
-  requests.post("https://hooks.slack.com/services/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",
+  requests.post(webhook,
                 json={"text": message})
 
 def main():
